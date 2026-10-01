@@ -726,11 +726,9 @@ elif page == "📸 Memory Wall":
         unsafe_allow_html=True
     )
 
-    
-   st.markdown(
-    '<div class="subtitle">Write a memory you\'ll never forget 💗</div>',
-    unsafe_allow_html=True
-)
+    st.markdown(
+        "<div class='subtitle'>Write a memory you'll never forget 💗</div>",
+        unsafe_allow_html=True
     )
 
     student = st.text_input(
@@ -777,6 +775,9 @@ elif page == "📸 Memory Wall":
         ORDER BY id DESC
         """
     ).fetchall()
+
+    if not memories:
+        st.info("📸 No memories yet. Be the first to add one!")
 
     for student_name, memory_text, created in memories:
 
