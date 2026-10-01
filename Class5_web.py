@@ -726,9 +726,11 @@ elif page == "📸 Memory Wall":
         unsafe_allow_html=True
     )
 
-    st.markdown(
-        <div class="subtitle">Write a memory you'll never forget </div>,
-        unsafe_allow_html=True
+    
+  st.markdown(
+    '<div class="subtitle">Write a memory you\'ll never forget 💗</div>',
+    unsafe_allow_html=True
+)
     )
 
     student = st.text_input(
