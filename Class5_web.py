@@ -148,7 +148,23 @@ teachers = [
         "name": "Miss Fahmida",
         "subject": "Urdu",
         "message": "Your kindness makes our classroom special! 🖤"
-    }
+    },
+     {
+        "name": "Miss Ayesha altaf",
+        "subject": "English",
+        "message": "Your kindness makes our classroom special! 🖤"
+    },
+      {
+        "name": "Miss Tanveer",
+        "subject": "Spoken English",
+        "message": "Your kindness makes our classroom special! 🖤"
+    },
+      {
+        "name": "Miss Malaika",
+        "subject": "Computer",
+        "message": "Your kindness makes our classroom special! 🖤"
+    },
+]
 ]
 
 teams = {
