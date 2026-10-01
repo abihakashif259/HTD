@@ -789,7 +789,7 @@ st.markdown("---")
 st.markdown(
     """
     <p style="text-align:center;color:#ff8fc7;font-size:15px;">
-        🖤💗 Made with Python + Streamlit for Teacher's Day 💗🖤
+        🖤💗 Made with 💗 for Teacher's Day 💗🖤by ABIHA KASHIF
         <br>
         ✨ Learn • Create • Appreciate • Celebrate ✨
     </p>
