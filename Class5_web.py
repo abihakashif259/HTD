@@ -331,7 +331,6 @@ pages = [
     "🗓️ Schedule",
     "💌 Appreciation Wall",
     "🏆 Awards",
-    "📸 Memory Wall",
     "🎉 Celebration Mode"
 ]
 
