@@ -804,7 +804,7 @@ elif page == "🎉 Celebration Mode":
     )
 
     st.markdown(
-        '<div class="subtitle">Let's make some noise for our teachers! 🔥</div>',
+        '<div class="subtitle">Let's make some noise for our teachers! </div>',
         unsafe_allow_html=True
     )
 
