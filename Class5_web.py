@@ -727,7 +727,7 @@ elif page == "📸 Memory Wall":
     )
 
     st.markdown(
-        '<div class="subtitle">Write a memory you'll never forget </div>',
+        <div class="subtitle">Write a memory you'll never forget </div>,
         unsafe_allow_html=True
     )
 
