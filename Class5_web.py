@@ -165,7 +165,6 @@ teachers = [
         "message": "Your kindness makes our classroom special! 🖤"
     },
 ]
-]
 
 teams = {
     "A123": {
