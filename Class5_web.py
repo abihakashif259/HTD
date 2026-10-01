@@ -307,19 +307,6 @@ elif page == "🗓️ Schedule":
         '<div class="subtitle">A day full of fun, appreciation and memories ✨</div>',
         unsafe_allow_html=True
     )
-
-    for time, activity in schedule:
-
-        st.markdown(
-            f"""
-            <div class="card">
-                <h3>⏰ {time}</h3>
-                <h2>{activity}</h2>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
 elif page == "🏆 Awards":
 
     st.markdown(
