@@ -132,64 +132,40 @@ teachers = [
     {
         "name": "Miss Sumaira Tabassum",
         "subject": "Urdu",
-        "message": "Thank you for inspiring us every day! 💗"
+        "message": "You make our language shine with beauty.💗"
     },
     {
         "name": "Miss Shanza",
         "subject": "Mathematics",
-        "message": "You make difficult things easy to understand! 🌸"
+        "message": "You make numbers feel like magic🌸"
     },
     {
         "name": "Ms. Fareeha",
         "subject": "Science",
-        "message": "Thank you for making learning exciting! ✨"
+        "message": "You show us the wonders behind everything✨"
     },
     {
         "name": "Miss Fahmida",
-        "subject": "Urdu",
-        "message": "Your kindness makes our classroom special! 🖤"
+        "subject": "Islamiat",
+        "message": "You guide us with wisdom and faith.🖤"
     },
      {
         "name": "Miss Ayesha altaf",
         "subject": "English",
-        "message": "Your kindness makes our classroom special! 🖤"
+        "message": "You turn words into worlds. 🖤"
     },
       {
         "name": "Miss Tanveer",
         "subject": "Spoken English",
-        "message": "Your kindness makes our classroom special! 🖤"
+        "message": "You give us the confidence to speak the world’s language🖤"
     },
       {
         "name": "Miss Malaika",
         "subject": "Computer",
-        "message": "Your kindness makes our classroom special! 🖤"
+        "message": "You open doors to the digital future. 🖤"
     },
 ]
-
-teams = {
-    "A123": {
-        "team": "Chair Champs",
-        "leader": "Mukkarma",
-        "task": "Arrange chairs"
-    },
-    "B456": {
-        "team": "Sparkle Squad",
-        "leader": "Lisa",
-        "task": "Decorate the board"
-    },
-    "C789": {
-        "team": "Snack Stars",
-        "leader": "Rosé",
-        "task": "Serve snacks"
-    },
-    "D111": {
-        "team": "Bloom Crew",
-        "leader": "Jisoo",
-        "task": "Table decoration"
-    }
-}
-
-schedule = [
+Schedule = [
     ("09:00 AM", "Welcome Ceremony"),
     ("09:45 AM", "Cake Cutting 🎂"),
     ("10:00 AM","Picture time"),
@@ -217,7 +193,6 @@ page = st.sidebar.radio(
     [
         "🏠 Home",
         "👩‍🏫 Teachers",
-        "🎀 Teams & Tasks",
         "🗓️ Schedule",
         "🏆 Awards"
     ]
@@ -315,46 +290,6 @@ elif page == "👩‍🏫 Teachers":
 # =========================================================
 # TEAMS & TASKS
 # =========================================================
-
-elif page == "🎀 Teams & Tasks":
-
-    st.markdown(
-        '<div class="main-title">🎀 TEAMS & TASKS</div>',
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        '<div class="subtitle">Find your celebration duty using your team code.</div>',
-        unsafe_allow_html=True
-    )
-
-    name = st.text_input(
-        "🌸 Enter your name",
-        placeholder="Your name..."
-    )
-
-    code = st.text_input(
-        "🎟️ Enter your team code",
-        placeholder="Example: A123"
-    )
-
-    if st.button("✨ SHOW MY TASK ✨"):
-
-        if code in teams:
-
-            info = teams[code]
-
-            st.success(f"💗 Hello {name or 'BLINK'}!")
-
-            st.write("🌸 **Team:**", info["team"])
-            st.write("👑 **Leader:**", info["leader"])
-            st.write("🎀 **Your Task:**", info["task"])
-
-        else:
-
-            st.error(
-                "❌ Invalid code. Please check your team code."
-            )
 
 
 # =========================================================
