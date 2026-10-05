@@ -1,4 +1,3 @@
-```python
 import streamlit as st
 import sqlite3
 import random
@@ -1081,7 +1080,7 @@ st.markdown(
         font-size:15px;
     ">
 
-        🖤💗 Made with 💗 for Teacher's Day 💗🖤
+        🖤💗 Made with 💗 for Teacher's Day 💗🖤by ABIHA KASHIF
         <br>
 
         <b>
