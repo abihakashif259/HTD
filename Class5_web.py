@@ -356,7 +356,7 @@ if page == "🏠 Home":
 
     st.markdown("## 🌸 Welcome to the Celebration Portal")
 
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3 = st.columns(3)
 
     with col1:
         st.metric("👩‍🏫 Teachers", len(teachers))
@@ -372,11 +372,6 @@ if page == "🏠 Home":
             "SELECT COUNT(*) FROM memories"
         ).fetchone()[0]
         st.metric("📸 Memories", memory_count)
-
-    with col4:
-        st.metric("🎉 Events", len(schedule))
-
-    st.markdown("---")
 
     st.markdown("""
     <div class="card">
