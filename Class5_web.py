@@ -115,19 +115,6 @@ teachers = [
     }
 ]
 
-# =========================================================
-# SCHEDULE
-# =========================================================
-
-schedule = [
-    ("09:00 AM", "🎀", "Welcome Ceremony", "Welcome everyone and introduce the celebration."),
-    ("09:45 AM", "🎂", "Cake Cutting", "Time for the Teacher's Day cake!"),
-    ("10:00 AM", "📸", "Picture Time", "Capture beautiful memories together."),
-    ("10:15 AM", "🍕", "Lunch Party", "Food, fun and lots of smiles."),
-    ("11:00 AM", "🎤", "Student Performances", "Speeches, poetry and performances."),
-    ("11:30 AM", "🏆", "Awards Ceremony", "Celebrate our amazing teachers."),
-    ("12:00 PM", "💌", "Thank You Session", "Students share appreciation messages.")
-]
 
 # =========================================================
 # SESSION STATE
@@ -328,7 +315,6 @@ pages = [
     "🏠 Home",
     "👩‍🏫 Teachers",
     "✨ My Teacher Task",
-    "🗓️ Schedule",
     "💌 Appreciation Wall",
     "🏆 Awards",
     "🎉 Celebration Mode"
