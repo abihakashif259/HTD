@@ -1,3 +1,4 @@
+```python
 import streamlit as st
 import sqlite3
 import random
@@ -116,20 +117,6 @@ teachers = [
 ]
 
 # =========================================================
-# SCHEDULE
-# =========================================================
-
-schedule = [
-    ("09:00 AM", "🎀", "Welcome Ceremony", "Welcome everyone and introduce the celebration."),
-    ("09:45 AM", "🎂", "Cake Cutting", "Time for the Teacher's Day cake!"),
-    ("10:00 AM", "📸", "Picture Time", "Capture beautiful memories together."),
-    ("10:15 AM", "🍕", "Lunch Party", "Food, fun and lots of smiles."),
-    ("11:00 AM", "🎤", "Student Performances", "Speeches, poetry and performances."),
-    ("11:30 AM", "🏆", "Awards Ceremony", "Celebrate our amazing teachers."),
-    ("12:00 PM", "💌", "Thank You Session", "Students share appreciation messages.")
-]
-
-# =========================================================
 # SESSION STATE
 # =========================================================
 
@@ -138,9 +125,6 @@ if "page" not in st.session_state:
 
 if "selected_teacher" not in st.session_state:
     st.session_state.selected_teacher = None
-
-if "celebration_mode" not in st.session_state:
-    st.session_state.celebration_mode = False
 
 # =========================================================
 # CSS
@@ -166,7 +150,7 @@ st.markdown("""
     padding-bottom: 3rem;
 }
 
-/* Main title */
+/* MAIN TITLE */
 
 .main-title {
     text-align: center;
@@ -185,7 +169,7 @@ st.markdown("""
     margin-bottom: 30px;
 }
 
-/* Cards */
+/* CARDS */
 
 .card {
     background: linear-gradient(145deg, #1b1b1b, #0e0e0e);
@@ -214,14 +198,18 @@ st.markdown("""
     color: #eeeeee;
 }
 
-/* Hero */
+/* HERO */
 
 .hero {
     padding: 45px;
     border-radius: 30px;
     text-align: center;
     background:
-        linear-gradient(135deg, rgba(255,20,147,.18), rgba(0,0,0,.75));
+        linear-gradient(
+            135deg,
+            rgba(255,20,147,.18),
+            rgba(0,0,0,.75)
+        );
     border: 1px solid #ff1493;
     box-shadow: 0 0 35px rgba(255,20,147,.2);
     margin-bottom: 25px;
@@ -238,11 +226,77 @@ st.markdown("""
     font-size: 20px;
 }
 
-/* Buttons */
+/* SPECIAL GOODBYE */
+
+.goodbye-hero {
+    padding: 55px 35px;
+    border-radius: 35px;
+    text-align: center;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,20,147,.25),
+            rgba(80,0,55,.45),
+            rgba(0,0,0,.85)
+        );
+    border: 2px solid #ff69b4;
+    box-shadow:
+        0 0 25px rgba(255,20,147,.3),
+        inset 0 0 30px rgba(255,20,147,.08);
+    margin-bottom: 30px;
+}
+
+.goodbye-hero h1 {
+    font-size: 58px;
+    color: #ff69b4;
+    text-shadow:
+        0 0 10px #ff1493,
+        0 0 25px rgba(255,20,147,.7);
+}
+
+.goodbye-hero h2 {
+    color: #ffb6d9;
+    font-size: 28px;
+}
+
+.goodbye-hero p {
+    color: #eeeeee;
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+.memory-card {
+    background: linear-gradient(145deg, #20101c, #0d0d0d);
+    border: 1px solid #ff69b4;
+    border-radius: 25px;
+    padding: 28px;
+    text-align: center;
+    min-height: 210px;
+    box-shadow: 0 0 20px rgba(255,20,147,.12);
+}
+
+.memory-card h2 {
+    font-size: 42px;
+}
+
+.memory-card h3 {
+    color: #ff69b4;
+}
+
+.memory-card p {
+    color: #eeeeee;
+    line-height: 1.7;
+}
+
+/* BUTTONS */
 
 .stButton > button {
     width: 100%;
-    background: linear-gradient(90deg, #ff1493, #ff4db8) !important;
+    background: linear-gradient(
+        90deg,
+        #ff1493,
+        #ff4db8
+    ) !important;
     color: white !important;
     border: none !important;
     border-radius: 13px !important;
@@ -256,7 +310,7 @@ st.markdown("""
     transform: translateY(-2px);
 }
 
-/* Inputs */
+/* INPUTS */
 
 .stTextInput label,
 .stTextArea label,
@@ -273,7 +327,7 @@ st.markdown("""
     border-radius: 12px !important;
 }
 
-/* Sidebar */
+/* SIDEBAR */
 
 section[data-testid="stSidebar"] {
     background: #100810;
@@ -284,7 +338,7 @@ section[data-testid="stSidebar"] * {
     color: white !important;
 }
 
-/* Metrics */
+/* METRICS */
 
 [data-testid="stMetric"] {
     background: #151015;
@@ -297,7 +351,7 @@ section[data-testid="stSidebar"] * {
     color: #ff69b4 !important;
 }
 
-/* Divider */
+/* DIVIDER */
 
 hr {
     border-color: #ff1493;
@@ -324,14 +378,13 @@ st.sidebar.markdown(
 
 st.sidebar.markdown("---")
 
+# ONLY THESE 5 PAGES
 pages = [
     "🏠 Home",
     "👩‍🏫 Teachers",
     "✨ My Teacher Task",
-    "🗓️ Schedule",
     "💌 Appreciation Wall",
-    "🏆 Awards",
-    "🎉 Celebration Mode"
+    "🌷 Special Goodbye"
 ]
 
 page = st.sidebar.radio(
@@ -361,47 +414,76 @@ if page == "🏠 Home":
 
     st.markdown("""
     <div class="hero">
-        <h1>🖤💗 HAPPY TEACHER'S DAY 💗🖤</h1>
-        <p>Celebrating the people who inspire us to dream bigger ✨</p>
+
+        <h1>
+        🖤💗 HAPPY TEACHER'S DAY 💗🖤
+        </h1>
+
+        <p>
+        Celebrating the people who inspire us
+        to dream bigger ✨
+        </p>
+
     </div>
     """, unsafe_allow_html=True)
 
     st.balloons()
 
-    st.markdown("## 🌸 Welcome to the Celebration Portal")
+    st.markdown(
+        "## 🌸 Welcome to the Celebration Portal"
+    )
 
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.metric("👩‍🏫 Teachers", len(teachers))
+
+        st.metric(
+            "👩‍🏫 Teachers",
+            len(teachers)
+        )
 
     with col2:
+
         message_count = cursor.execute(
             "SELECT COUNT(*) FROM messages"
         ).fetchone()[0]
-        st.metric("💌 Messages", message_count)
+
+        st.metric(
+            "💌 Messages",
+            message_count
+        )
 
     with col3:
+
         memory_count = cursor.execute(
             "SELECT COUNT(*) FROM memories"
         ).fetchone()[0]
-        st.metric("📸 Memories", memory_count)
 
-    with col4:
-        st.metric("🎉 Events", len(schedule))
+        st.metric(
+            "📸 Memories",
+            memory_count
+        )
 
     st.markdown("---")
 
     st.markdown("""
     <div class="card">
-        <h2>🌷 A Special Message</h2>
+
+        <h2>
+        🌷 A Special Message
+        </h2>
+
         <p>
         A teacher doesn't simply teach lessons.
         A teacher inspires dreams, builds confidence,
         encourages creativity and helps students discover
         what they are capable of.
         </p>
-        <h3>Thank you, teachers! 💗</h3>
+
+        <h3>
+        Thank you, teachers! 💗
+        </h3>
+
     </div>
     """, unsafe_allow_html=True)
 
@@ -410,17 +492,23 @@ if page == "🏠 Home":
     c1, c2, c3 = st.columns(3)
 
     with c1:
+
         if st.button("👩‍🏫 Meet Teachers"):
+
             st.session_state.page = "👩‍🏫 Teachers"
             st.rerun()
 
     with c2:
+
         if st.button("✨ Find My Task"):
+
             st.session_state.page = "✨ My Teacher Task"
             st.rerun()
 
     with c3:
+
         if st.button("💌 Write Appreciation"):
+
             st.session_state.page = "💌 Appreciation Wall"
             st.rerun()
 
@@ -449,14 +537,25 @@ elif page == "👩‍🏫 Teachers":
             st.markdown(
                 f"""
                 <div class="card">
-                    <h2>{teacher['emoji']} {teacher['name']}</h2>
-                    <h3>📚 {teacher['subject']}</h3>
-                    <p>💌 {teacher['message']}</p>
+
+                    <h2>
+                    {teacher['emoji']} {teacher['name']}
+                    </h2>
+
+                    <h3>
+                    📚 {teacher['subject']}
+                    </h3>
+
+                    <p>
+                    💌 {teacher['message']}
+                    </p>
+
                     <p>
                     <b style="color:#ff69b4;">
                     Teacher Code: {teacher['code']}
                     </b>
                     </p>
+
                 </div>
                 """,
                 unsafe_allow_html=True
@@ -488,7 +587,9 @@ elif page == "✨ My Teacher Task":
         found = None
 
         for teacher in teachers:
+
             if teacher["code"].upper() == code.strip().upper():
+
                 found = teacher
                 break
 
@@ -501,11 +602,25 @@ elif page == "✨ My Teacher Task":
             st.markdown(
                 f"""
                 <div class="hero">
-                    <h1>{found['emoji']} {found['name']}</h1>
-                    <p>📚 {found['subject']}</p>
+
+                    <h1>
+                    {found['emoji']} {found['name']}
+                    </h1>
+
+                    <p>
+                    📚 {found['subject']}
+                    </p>
+
                     <hr>
-                    <h2 style="color:#ff69b4;">🎯 YOUR SPECIAL TASK</h2>
-                    <p>{found['task']}</p>
+
+                    <h2 style="color:#ff69b4;">
+                    🎯 YOUR SPECIAL TASK
+                    </h2>
+
+                    <p>
+                    {found['task']}
+                    </p>
+
                 </div>
                 """,
                 unsafe_allow_html=True
@@ -515,42 +630,15 @@ elif page == "✨ My Teacher Task":
 
         else:
 
-            st.error("❌ Teacher code not found. Please check the code.")
+            st.error(
+                "❌ Teacher code not found. Please check the code."
+            )
 
     st.markdown("---")
 
     st.info(
         "💡 Teacher codes are displayed on the Teachers page."
     )
-
-# =========================================================
-# SCHEDULE
-# =========================================================
-
-elif page == "🗓️ Schedule":
-
-    st.markdown(
-        '<div class="main-title">🗓️ CELEBRATION SCHEDULE</div>',
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        '<div class="subtitle">One beautiful day. Lots of memories. 💗</div>',
-        unsafe_allow_html=True
-    )
-
-    for time, icon, title, description in schedule:
-
-        st.markdown(
-            f"""
-            <div class="card">
-                <h2>{icon} {title}</h2>
-                <h3>⏰ {time}</h3>
-                <p>{description}</p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
 
 # =========================================================
 # APPRECIATION WALL
@@ -573,7 +661,10 @@ elif page == "💌 Appreciation Wall":
         placeholder="Enter your name"
     )
 
-    teacher_names = [teacher["name"] for teacher in teachers]
+    teacher_names = [
+        teacher["name"]
+        for teacher in teachers
+    ]
 
     selected_teacher = st.selectbox(
         "👩‍🏫 Choose Teacher",
@@ -599,21 +690,31 @@ elif page == "💌 Appreciation Wall":
                     student,
                     selected_teacher,
                     message,
-                    datetime.now().strftime("%Y-%m-%d %H:%M")
+                    datetime.now().strftime(
+                        "%Y-%m-%d %H:%M"
+                    )
                 )
             )
 
             conn.commit()
 
-            st.success("💗 Your message has been added!")
+            st.success(
+                "💗 Your message has been added!"
+            )
+
             st.rerun()
 
         else:
-            st.warning("Please enter your name and message.")
+
+            st.warning(
+                "Please enter your name and message."
+            )
 
     st.markdown("---")
 
-    st.markdown("## 🌸 Messages from Students")
+    st.markdown(
+        "## 🌸 Messages from Students"
+    )
 
     messages = cursor.execute(
         """
@@ -625,157 +726,344 @@ elif page == "💌 Appreciation Wall":
 
     if not messages:
 
-        st.info("No messages yet. Be the first one! 💌")
+        st.info(
+            "No messages yet. Be the first one! 💌"
+        )
 
     for student_name, teacher_name, msg, created in messages:
 
         st.markdown(
             f"""
             <div class="card">
-                <h3>💗 {student_name} → {teacher_name}</h3>
-                <p>“{msg}”</p>
-                <small style="color:#888;">{created}</small>
+
+                <h3>
+                💗 {student_name} → {teacher_name}
+                </h3>
+
+                <p>
+                “{msg}”
+                </p>
+
+                <small style="color:#888;">
+                {created}
+                </small>
+
             </div>
             """,
             unsafe_allow_html=True
         )
 
 # =========================================================
-# AWARDS
+# SPECIAL GOODBYE - MISS SHANZA
 # =========================================================
 
-elif page == "🏆 Awards":
+elif page == "🌷 Special Goodbye":
 
     st.markdown(
-        '<div class="main-title">🏆 TEACHER AWARDS</div>',
+        '<div class="main-title">🌷 A SPECIAL GOODBYE 🌷</div>',
         unsafe_allow_html=True
     )
 
     st.markdown(
-        '<div class="subtitle">Students can choose a teacher for each award 💗</div>',
+        '<div class="subtitle">For our beloved Maths Teacher, Miss Shanza 💗</div>',
         unsafe_allow_html=True
     )
 
-    awards = [
-        ("🌟", "Most Inspiring Teacher"),
-        ("💗", "Most Caring Teacher"),
-        ("😊", "Friendliest Teacher"),
-        ("📚", "Best Mentor"),
-        ("✨", "Students' Choice Award")
-    ]
+    # -----------------------------------------------------
+    # GOODBYE HERO
+    # -----------------------------------------------------
 
-    student = st.text_input(
-        "👤 Your Name",
-        key="award_student"
-    )
-
-    for icon, award in awards:
-
-        st.markdown(
-            f"""
-            <div class="card">
-                <h2>{icon} {award}</h2>
-                <p>Choose the teacher who deserves this appreciation.</p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-        selected = st.selectbox(
-            f"👩‍🏫 Teacher for {award}",
-            [teacher["name"] for teacher in teachers],
-            key=award
-        )
-
-        if st.button(
-            f"🏆 Vote for {award}",
-            key=f"vote_{award}"
-        ):
-
-            if student.strip():
-
-                cursor.execute(
-                    """
-                    INSERT INTO votes
-                    (student, award, teacher, created_at)
-                    VALUES (?, ?, ?, ?)
-                    """,
-                    (
-                        student,
-                        award,
-                        selected,
-                        datetime.now().strftime("%Y-%m-%d %H:%M")
-                    )
-                )
-
-                conn.commit()
-
-                st.success("🏆 Vote recorded!")
-            else:
-                st.warning("Please enter your name first.")
-
-# =========================================================
-# CELEBRATION MODE
-# =========================================================
-
-elif page == "🎉 Celebration Mode":
-
-    st.markdown(
-        '<div class="main-title">🎉 CELEBRATION MODE</div>',
-        unsafe_allow_html=True
-    )
     st.markdown("""
-    <div class="hero">
-        <h1>🖤💗 TEACHERS ROCK! 💗🖤</h1>
+    <div class="goodbye-hero">
+
+        <h1>
+        🧮💗 MISS SHANZA 💗🧮
+        </h1>
+
+        <h2>
+        Our Maths Teacher • Our Memories • Our Inspiration
+        </h2>
+
         <p>
-        Thank you for teaching us, believing in us,
-        encouraging us and making school special.
+        "Some teachers leave the school,
+        but they never leave our hearts." 🌸
         </p>
+
     </div>
     """, unsafe_allow_html=True)
 
-    col1, col2 = st.columns(2)
+    # -----------------------------------------------------
+    # LETTER
+    # -----------------------------------------------------
+
+    st.markdown("""
+    <div class="card">
+
+        <h2>
+        💌 Dear Miss Shanza,
+        </h2>
+
+        <p style="font-size:18px;line-height:1.9;">
+
+        You may have left our school, but the lessons,
+        memories and moments you gave us will always
+        remain a beautiful part of our Class 5 journey. 💗
+
+        </p>
+
+        <p style="font-size:18px;line-height:1.9;">
+
+        You taught us more than just numbers and equations.
+        You taught us to keep trying when a question seemed
+        difficult and to never give up. 🧮✨
+
+        </p>
+
+        <p style="font-size:18px;line-height:1.9;">
+
+        We will miss your classes, your explanations,
+        your corrections and all those little moments
+        that made our Maths lessons special. 🥺🌷
+
+        </p>
+
+        <p style="font-size:18px;line-height:1.9;">
+
+        Wherever you are, we hope you know that your students
+        remember you with love, respect and gratitude. 💗
+
+        </p>
+
+        <h2 style="text-align:center;">
+        💗 Thank You For Everything, Miss Shanza! 💗
+        </h2>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    # -----------------------------------------------------
+    # MEMORY CARDS
+    # -----------------------------------------------------
+
+    st.markdown(
+        "## 🌸 What We Will Remember"
+    )
+
+    col1, col2, col3 = st.columns(3)
 
     with col1:
 
-        if st.button("🎊 START CELEBRATION"):
+        st.markdown("""
+        <div class="memory-card">
 
-            st.balloons()
-            st.snow()
+            <h2>🧮</h2>
 
-            messages = [
-                "🎉 HAPPY TEACHER'S DAY!",
-                "💗 THANK YOU TEACHERS!",
-                "🌸 YOU ARE AMAZING!",
-                "✨ TEACHERS MAKE DREAMS POSSIBLE!",
-                "🖤 WE APPRECIATE YOU!"
-            ]
+            <h3>
+            Maths Lessons
+            </h3>
 
-            st.success(random.choice(messages))
+            <p>
+            The equations, questions,
+            practice and all those moments
+            when Maths finally made sense! ✨
+            </p>
+
+        </div>
+        """, unsafe_allow_html=True)
 
     with col2:
 
-        if st.button("🎁 GIVE VIRTUAL GIFT"):
+        st.markdown("""
+        <div class="memory-card">
 
-            gifts = [
-                "🌸 A bouquet of flowers!",
-                "🍫 A box of chocolates!",
-                "🎂 A delicious cake!",
-                "💗 A giant thank-you hug!",
-                "🏆 A golden Teacher Award!"
-            ]
+            <h2>😂</h2>
 
-            st.success(random.choice(gifts))
+            <h3>
+            Classroom Memories
+            </h3>
+
+            <p>
+            The smiles, little jokes,
+            questions and unforgettable
+            classroom moments. 💗
+            </p>
+
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col3:
+
+        st.markdown("""
+        <div class="memory-card">
+
+            <h2>🌟</h2>
+
+            <h3>
+            Your Lessons
+            </h3>
+
+            <p>
+            The confidence to keep trying
+            even when the answer wasn't
+            easy to find. 💪✨
+            </p>
+
+        </div>
+        """, unsafe_allow_html=True)
+
+    # -----------------------------------------------------
+    # MEMORY FORM
+    # -----------------------------------------------------
+
+    st.markdown("---")
+
+    st.markdown(
+        "## 💌 Leave a Memory for Miss Shanza"
+    )
+
+    st.markdown(
+        """
+        <p style="color:#ffb6d9;font-size:17px;">
+        Write one memory, message or thank-you note
+        that you would like Miss Shanza to remember. 🌷
+        </p>
+        """,
+        unsafe_allow_html=True
+    )
+
+    goodbye_student = st.text_input(
+        "👤 Your Name",
+        placeholder="Enter your name...",
+        key="goodbye_student"
+    )
+
+    goodbye_memory = st.text_area(
+        "💗 Your Message",
+        placeholder="Write your favourite memory or a goodbye message...",
+        key="goodbye_memory"
+    )
+
+    if st.button(
+        "🌷 SAVE MY MEMORY",
+        key="save_goodbye"
+    ):
+
+        if (
+            goodbye_student.strip()
+            and goodbye_memory.strip()
+        ):
+
+            cursor.execute(
+                """
+                INSERT INTO memories
+                (student, memory, created_at)
+                VALUES (?, ?, ?)
+                """,
+                (
+                    goodbye_student,
+                    goodbye_memory,
+                    datetime.now().strftime(
+                        "%Y-%m-%d %H:%M"
+                    )
+                )
+            )
+
+            conn.commit()
+
+            st.success(
+                "💗 Your memory has been saved for Miss Shanza!"
+            )
+
+            st.snow()
+
+        else:
+
+            st.warning(
+                "Please enter your name and message first."
+            )
+
+    # -----------------------------------------------------
+    # MEMORY WALL
+    # -----------------------------------------------------
+
+    st.markdown("---")
+
+    st.markdown(
+        "## 🌸 Memories From Class 5"
+    )
+
+    memories = cursor.execute(
+        """
+        SELECT student, memory, created_at
+        FROM memories
+        ORDER BY id DESC
+        """
+    ).fetchall()
+
+    if not memories:
+
+        st.info(
+            "🌷 No memories have been added yet. "
+            "Be the first student to leave one!"
+        )
+
+    else:
+
+        for student_name, memory, created in memories:
+
+            st.markdown(
+                f"""
+                <div class="card">
+
+                    <h3>
+                    💗 {student_name}
+                    </h3>
+
+                    <p style="
+                        font-size:18px;
+                        line-height:1.7;
+                    ">
+                    "{memory}"
+                    </p>
+
+                    <small style="color:#888;">
+                    🌷 Class 5 Memory • {created}
+                    </small>
+
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+
+    # -----------------------------------------------------
+    # FINAL GOODBYE
+    # -----------------------------------------------------
 
     st.markdown("---")
 
     st.markdown("""
-    <div class="card">
-        <h2>💌 Teacher's Day Promise</h2>
+    <div class="goodbye-hero">
+
+        <h1>
+        🌷 WE WILL MISS YOU 🌷
+        </h1>
+
         <p>
-        We promise to keep learning, keep trying,
-        respect our teachers and make them proud.
+        Thank you for being a part of our journey. 💗
         </p>
+
+        <p style="
+            font-size:24px;
+            color:#ff69b4;
+            font-weight:bold;
+        ">
+        Once our teacher, always our teacher. 🧮💗
+        </p>
+
+        <p style="font-size:30px;">
+        🌸 💗 🧮 ✨ 🌷
+        </p>
+
     </div>
     """, unsafe_allow_html=True)
 
@@ -787,10 +1075,23 @@ st.markdown("---")
 
 st.markdown(
     """
-    <p style="text-align:center;color:#ff8fc7;font-size:15px;">
-        🖤💗 Made with 💗 for Teacher's Day 💗🖤by ABIHA KASHIF
+    <p style="
+        text-align:center;
+        color:#ff8fc7;
+        font-size:15px;
+    ">
+
+        🖤💗 Made with 💗 for Teacher's Day 💗🖤
         <br>
+
+        <b>
+        by ABIHA KASHIF
+        </b>
+
+        <br>
+
         ✨ Learn • Create • Appreciate • Celebrate ✨
+
     </p>
     """,
     unsafe_allow_html=True
@@ -801,3 +1102,4 @@ st.markdown(
 # =========================================================
 
 conn.close()
+```
